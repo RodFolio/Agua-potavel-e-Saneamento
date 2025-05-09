@@ -31,11 +31,9 @@ O **Sistema de Denúncias de Saneamento** é uma aplicação em Python que permi
 O código está dividido em funções e classes que implementam as funcionalidades do sistema:
 
 ### Classes
-- **
 
 Denuncia_bairro
-
-**  
+ 
   Representa uma denúncia, contendo:
   - Tipo do problema
   - Descrição
@@ -43,11 +41,8 @@ Denuncia_bairro
   - Local (bairro)
   - Prioridade
 
-- **
-
 NoBairro
 
-**  
   Representa um nó da árvore binária de bairros, contendo:
   - Nome do bairro
   - Lista de denúncias associadas ao bairro
@@ -60,14 +55,10 @@ NoBairro
 - **`buscar_denuncias_bairro(raiz, bairro)`**  
   Busca todas as denúncias associadas a um bairro específico na árvore binária.
 
-- **
-
 sistema_denuncias()
 
-**  
   Função principal que implementa o menu interativo do sistema e gerencia as opções escolhidas pelo usuário.
 
-- **
 
 loading_animado()
 
@@ -138,28 +129,3 @@ Este projeto está licenciado sob a [MIT License](LICENSE).
 
 ## Autor
 Desenvolvido por **RodFolio**.
-
-RodFolio: @workspace Quais seções você gostaria de adicionar?
-
-Workspace: Pelo contexto do código e da aplicação, seria interessante adicionar as seguintes seções ao README para torná-lo mais completo e informativo:
-
-1. **Visão Geral**  
-   Uma breve explicação sobre o propósito do sistema e o problema que ele resolve.
-
-2. **Tecnologias Utilizadas**  
-   Lista das tecnologias e bibliotecas usadas no projeto.
-
-3. **Instalação e Configuração**  
-   Instruções detalhadas para configurar e executar o sistema localmente.
-
-4. **Exemplos de Uso**  
-   Exemplos práticos de como interagir com o sistema, incluindo entradas e saídas esperadas.
-
-5. **Estrutura do Projeto**  
-   Explicação sobre a organização dos arquivos e diretórios no projeto.
-
-6. **Contribuição**  
-   Orientações para quem deseja contribuir com o projeto.
-
-7. **Licença**  
-   Detalhes sobre a licença do projeto (já está presente, mas pode ser expandida).
