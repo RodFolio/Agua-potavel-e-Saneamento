@@ -1,1 +1,0 @@
-print("\033[1;31mTexto vermelho e em negrito\033[0m")
