@@ -1,5 +1,3 @@
-# Agua-potavel-e-Saneamento
-
 # Sistema de Denúncias de Saneamento
 
 ## Descrição
