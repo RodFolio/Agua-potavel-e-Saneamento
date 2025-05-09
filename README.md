@@ -62,11 +62,7 @@ sistema_denuncias()
 
 loading_animado()
 
-** *(definida em 
-
-inicio.py
-
-)*  
+**(definida em inicio.py)
   Exibe uma animação de carregamento ao iniciar o sistema.
 
 ## Estrutura de Dados
