@@ -1,6 +1,6 @@
 # Agua-potavel-e-Saneamento
 
-Workspace: # Sistema de Denúncias de Saneamento
+# Sistema de Denúncias de Saneamento
 
 ## Descrição
 O **Sistema de Denúncias de Saneamento** é uma aplicação em Python que permite o registro, consulta e gerenciamento de denúncias relacionadas a problemas de saneamento básico em diferentes bairros. O sistema organiza as denúncias em uma estrutura de árvore binária, facilitando a busca por bairro, além de manter um histórico de ações e uma fila de atendimento para priorização.
