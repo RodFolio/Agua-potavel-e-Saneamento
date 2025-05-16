@@ -1,6 +1,11 @@
 from collections import deque
 # import datetime
 
+
+fila_atendimento = deque()
+vetor_historico = []
+vetor_denuncias = []
+
 class Denuncia_bairro:
     def __init__(self, tipo, descricao, data, local, prioridade):
         self.tipo = tipo
@@ -11,11 +16,7 @@ class Denuncia_bairro:
 
     def __str__(self):
         return (f"[{self.data}] {self.tipo} em {self.local} - "
-                f"Prioridade: {self.prioridade}\\n{self.descricao}")
-
-historico = []
-fila_atendimento = deque()
-denuncias = []
+                f"Prioridade: {self.prioridade} - {self.descricao}")
 
 class NoBairro:
     def __init__(self, bairro):
@@ -23,7 +24,6 @@ class NoBairro:
         self.denuncias = []
         self.esq = None
         self.dir = None
-
 
 def inserir_bairro(raiz, bairro, denuncia):
     if raiz is None:
@@ -61,6 +61,7 @@ def sistema_denuncias():
     3. Ver fila de atendimento
     4. Ver histórico de ações
     5. Buscar denúncias por bairro
+    6. Atender próxima denúncia (Ao ser atendido ele é retirado da fila)
     0. Sair
     """)
 
@@ -73,46 +74,58 @@ def sistema_denuncias():
             local = input("\033[1;33mBairro: \033[0m")
             prioridade = int(input("\033[1;31mPrioridade (1=Alta, 2=Média, 3=Baixa): \033[0m"))
 
-
             d = Denuncia_bairro(tipo, descricao, data, local, prioridade)
-            denuncias.append(d)
+            vetor_denuncias.append(d)
             fila_atendimento.append(d)
-            historico.append(f"Denúncia cadastrada: {tipo} - {local}")
+            vetor_historico.append(f"Denúncia cadastrada: {tipo} - {local}")
             raiz_bairros = inserir_bairro(raiz_bairros, local, d)
-            print("Denúncia registrada com sucesso.")
+            print("✅ \033[32mDenúncia registrada com sucesso.\033[0m")
 
         elif opcao == "2":
             print("\n--- \033[1;31mTodas as Denúncias\033[0m ---")
-            for d in denuncias:
-                print(d, "\n")
+            for d in vetor_denuncias:
+                print(d)
 
         elif opcao == "3":
-            print("\n--- \033[1;36mFila de Atendimento\033[0m ---")
-            for d in fila_atendimento:
-                print(f"{d.tipo} - {d.local}")
+            print("\n--- \033[1;36mFila de Atendimento (ordenada por prioridade)\033[0m ---")
+            fila_ordenada = sorted(fila_atendimento, key=lambda x: x.prioridade)
+            for d in fila_ordenada:
+                print(f"{d.tipo} - {d.local} - Prioridade: {d.prioridade}")
 
         elif opcao == "4":
             print("\n--- Histórico de Ações ---")
-            for h in historico:
+            for h in vetor_historico:
                 print(h)
 
         elif opcao == "5":
             bairro = input("\033[33mDigite o bairro:\033[0m ")
             resultados = buscar_denuncias_bairro(raiz_bairros, bairro)
             if resultados:
-                print(f"\nDenúncias no bairro {bairro}:")
+                print(f"\nDenúncias no bairro {bairro} ({len(resultados)}):")
                 for d in resultados:
-                    print(d, "\n")
+                    print(d)
             else:
                 print("Nenhuma denúncia encontrada para esse bairro.")
 
+        elif opcao == "6":
+            if not fila_atendimento:
+                print("\n\033[33mNenhuma denúncia na fila de atendimento.\033[0m")
+            else:
+
+                print("\n--- \033[1;36mAtendendo próxima denúncia\033[0m ---")
+                fila_ordenada = sorted(fila_atendimento, key=lambda x: x.prioridade)
+                denuncia_atendida = fila_ordenada[0]
+                fila_atendimento.remove(denuncia_atendida)
+                print("\n\033[1;32mDenúncia atendida:\033[0m")
+                print(denuncia_atendida)
+                vetor_historico.append(f"Denúncia atendida: {denuncia_atendida.tipo} - {denuncia_atendida.local}")
+
         elif opcao == "0":
-            print("Encerrando o sistema.")
+            print("\n\033[1;34mSistema encerrado. Até mais!\033[0m")
             break
 
         else:
             print("\033[1;31mOpção inválida. Tente novamente.\033[0m \n")
-            # print(end="")
 
 if __name__ == "__main__":
     sistema_denuncias()

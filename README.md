@@ -1,127 +1,119 @@
 # Sistema de Denúncias de Saneamento
 
-## Descrição
-O **Sistema de Denúncias de Saneamento** é uma aplicação em Python que permite o registro, consulta e gerenciamento de denúncias relacionadas a problemas de saneamento básico em diferentes bairros. O sistema organiza as denúncias em uma estrutura de árvore binária, facilitando a busca por bairro, além de manter um histórico de ações e uma fila de atendimento para priorização.
+## 📌 Descrição
+O **Sistema de Denúncias de Saneamento** é uma aplicação em Python que permite o registro, consulta, atendimento e gerenciamento de denúncias relacionadas a problemas de saneamento básico em diferentes bairros. O sistema organiza as denúncias em uma **árvore binária** (para buscas por bairro), mantém uma **fila de atendimento priorizada**, e registra um **histórico de ações**.
 
-## Funcionalidades
+## ⚙️ Funcionalidades
+
 1. **Cadastrar nova denúncia**  
-   Permite registrar uma nova denúncia informando:
+   Permite registrar uma nova denúncia com os seguintes dados:
    - Tipo do problema
-   - Descrição do problema
+   - Descrição
    - Data do ocorrido
-   - Bairro onde ocorreu
-   - Prioridade (Alta, Média ou Baixa)
+   - Bairro (local)
+   - Prioridade (Alta = 1, Média = 2, Baixa = 3)
 
 2. **Ver todas as denúncias**  
-   Exibe todas as denúncias registradas no sistema.
+   Lista todas as denúncias registradas no sistema.
 
 3. **Ver fila de atendimento**  
-   Mostra a fila de atendimento, ordenada pela ordem de registro das denúncias.
+   Exibe a fila de atendimento **ordenada por prioridade** (1 mais urgente → 3 menos urgente).
 
 4. **Ver histórico de ações**  
-   Exibe o histórico de ações realizadas no sistema, como o registro de novas denúncias.
+   Mostra todas as ações realizadas, como denúncias registradas ou atendidas.
 
 5. **Buscar denúncias por bairro**  
-   Permite buscar todas as denúncias registradas em um bairro específico.
+   Permite pesquisar todas as denúncias de um bairro específico.
 
-6. **Sair do sistema**  
+6. **Atender próxima denúncia**  
+   Remove da fila e atende a denúncia com **maior prioridade (menor valor)**, registrando no histórico.
+
+0. **Sair do sistema**  
    Encerra a execução do programa.
 
-## Estrutura do Código
-O código está dividido em funções e classes que implementam as funcionalidades do sistema:
+## 🧱 Estrutura do Código
 
-### Classes
+### 📦 Classes
 
-Denuncia_bairro
- 
-  Representa uma denúncia, contendo:
-  - Tipo do problema
-  - Descrição
-  - Data
-  - Local (bairro)
-  - Prioridade
+#### `Denuncia_bairro`
+Representa uma denúncia individual. Atributos:
+- Tipo do problema
+- Descrição
+- Data
+- Local (bairro)
+- Prioridade (1, 2 ou 3)
 
-NoBairro
+#### `NoBairro`
+Representa um nó na árvore binária. Atributos:
+- Nome do bairro
+- Lista de denúncias associadas
+- Referências à esquerda e à direita (subárvores)
 
-  Representa um nó da árvore binária de bairros, contendo:
-  - Nome do bairro
-  - Lista de denúncias associadas ao bairro
-  - Referências para os nós esquerdo e direito da árvore
+### 🔧 Funções
 
-### Funções
-- **`inserir_bairro(raiz, bairro, denuncia)`**  
-  Insere um novo bairro na árvore binária ou adiciona uma denúncia a um bairro existente.
+- `inserir_bairro(raiz, bairro, denuncia)`  
+  Insere um novo bairro ou adiciona uma denúncia a um bairro existente na árvore binária.
 
-- **`buscar_denuncias_bairro(raiz, bairro)`**  
-  Busca todas as denúncias associadas a um bairro específico na árvore binária.
+- `buscar_denuncias_bairro(raiz, bairro)`  
+  Retorna a lista de denúncias associadas a um bairro específico.
 
-sistema_denuncias()
+- `sistema_denuncias()`  
+  Função principal que executa o menu interativo e gerencia as funcionalidades do sistema.
 
-  Função principal que implementa o menu interativo do sistema e gerencia as opções escolhidas pelo usuário.
+> 💡 **Nota**: A função `loading_animado()` (definida em `inicio.py`) pode ser chamada antes de `sistema_denuncias()` para exibir uma animação de carregamento ao iniciar.
 
+## 🗂️ Estruturas de Dados Utilizadas
 
-loading_animado()
-
-**(definida em inicio.py)
-  Exibe uma animação de carregamento ao iniciar o sistema.
-
-## Estrutura de Dados
 - **Árvore Binária**  
-  Utilizada para organizar os bairros e suas respectivas denúncias, permitindo buscas eficientes.
+  Organiza os bairros e suas denúncias, otimizando a busca por nome.
 
-- **Deque**  
-  Utilizado para gerenciar a fila de atendimento.
+- **Deque (Fila de Atendimento)**  
+  Armazena denúncias pendentes. Na visualização ou atendimento, é ordenada por prioridade.
 
 - **Lista**  
-  Utilizada para armazenar o histórico de ações e todas as denúncias registradas.
+  Utilizada para:
+  - Armazenar todas as denúncias
+  - Registrar o histórico de ações
 
-## Fluxo de Execução
-1. O programa inicia com uma animação de carregamento.
-2. O menu principal é exibido, permitindo ao usuário escolher uma das opções disponíveis.
-3. Dependendo da opção escolhida, o sistema realiza a ação correspondente:
-   - Registrar uma nova denúncia
-   - Exibir todas as denúncias
-   - Mostrar a fila de atendimento
-   - Exibir o histórico de ações
-   - Buscar denúncias por bairro
-   - Encerrar o sistema
+## 🔁 Fluxo de Execução
 
-## Exemplo de Uso
-### Cadastro de Denúncia
-1. Escolha a opção **1** no menu.
-2. Insira os dados da denúncia:
-   - Tipo: "Falta de água"
-   - Descrição: "Falta de água há 3 dias"
-   - Data: "10/10/2025"
-   - Bairro: "Centro"
-   - Prioridade: "1" (Alta)
-3. A denúncia será registrada e adicionada à árvore binária, à lista de denúncias e à fila de atendimento.
+1. (Opcional) A animação de carregamento é exibida.
+2. O usuário interage com o menu principal.
+3. Cada opção chama a funcionalidade correspondente, como:
+   - Registrar denúncia
+   - Exibir dados
+   - Atender denúncia mais urgente
+   - Buscar por bairro
+   - Encerrar o programa
 
-### Busca por Bairro
-1. Escolha a opção **5** no menu.
-2. Insira o nome do bairro, por exemplo, "Centro".
-3. O sistema exibirá todas as denúncias registradas para o bairro informado.
+## 🧪 Exemplos de Uso
 
-## Requisitos
-- **Python 3.6+**
-- Biblioteca padrão do Python (não são necessárias dependências externas)
+### ✅ Cadastro de Denúncia
+1. Escolha a opção `1` no menu.
+2. Preencha os dados:
+   - Tipo: `Falta de água`
+   - Descrição: `Sem fornecimento há 3 dias`
+   - Data: `10/10/2025`
+   - Bairro: `Centro`
+   - Prioridade: `1` (Alta)
+3. A denúncia será adicionada à lista geral, à fila de atendimento e ao bairro na árvore binária.
 
-## Como Executar
+### 🔍 Busca por Bairro
+1. Escolha a opção `5`.
+2. Digite o nome do bairro, como `Centro`.
+3. O sistema listará todas as denúncias registradas para esse bairro.
+
+### 🛠️ Atendimento de Denúncia
+1. Escolha a opção `6`.
+2. O sistema localizará e atenderá a **denúncia de maior prioridade** (prioridade 1 > 2 > 3).
+3. A denúncia será removida da fila e adicionada ao histórico.
+
+## 💻 Requisitos
+- Python **3.6** ou superior
+- Apenas bibliotecas padrão do Python (`collections`)
+
+## ▶️ Como Executar
+
 1. Clone o repositório:
    ```bash
    git clone https://github.com/seu-usuario/agua-potavel-e-saneamento.git
-   ```
-2. Navegue até o diretório do projeto:
-   ```bash
-   cd agua-potavel-e-saneamento
-   ```
-3. Execute o programa:
-   ```bash
-   python inicio.py
-   ```
-
-## Licença
-Este projeto está licenciado sob a [MIT License](LICENSE).
-
-## Autor
-Desenvolvido por **RodFolio**.
