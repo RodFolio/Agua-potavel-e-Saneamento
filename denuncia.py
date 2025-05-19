@@ -130,5 +130,7 @@ def sistema_denuncias():
         else:
             print("\033[1;31mOpção inválida. Tente novamente.\033[0m \n")
 
-if __name__ == "__main__":
-    sistema_denuncias()
+
+# Teste de execução do sistema
+# if __name__ == "__main__":
+#     sistema_denuncias()
