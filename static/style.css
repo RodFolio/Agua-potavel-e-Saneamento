@@ -13,7 +13,7 @@ body {
 .card {
     box-shadow: 0 2px 4px rgba(0,0,0,.05);
     border: none;
-    margin-bottom: 1.5rem;
+    margin-bottom: 0.8rem;
 }
 
 .card-header {
