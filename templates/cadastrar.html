@@ -1,0 +1,80 @@
+{% extends "base.html" %} {% block content %}
+<div class="row d-flex justify-content-center">
+  <div class="col-md-7" style="height: 518px;">
+    <div class="card">
+      <div class="card-header">
+        <h3 class="card-title mb-1 mt-3 text-center fs-3" style="font-family: Poppins, sans-serif;">Nova Denúncia</h3>
+      </div>
+      <div class="card-body">
+        <form method="POST" action="{{ url_for('cadastrar') }}">
+          <div class="mb-2">
+            <label for="tipo" class="form-label">Tipo de Problema</label>
+            <input type="text" class="form-control" id="tipo" name="tipo" required placeholder="Ex: Esgoto, Iluminação, etc."/>
+          </div>
+
+          <div class="mb-1" >
+            <label for="descricao" class="form-label">Descrição do Problema</label>
+            <textarea
+              class="form-control" style="resize: none;"
+              id="descricao"
+              name="descricao"
+              rows="3"
+              required
+              placeholder="Descreva o problema detalhadamente."
+            ></textarea>
+          </div>
+
+          <div class="mb-3">
+            <label for="data" class="form-label">Data (dd/mm/aaaa)</label>
+            <input
+              type="text"
+              class="form-control"
+              id="data"
+              name="data"
+              pattern="\d{2}/\d{2}/\d{4}"
+              placeholder="dd/mm/aaaa"
+              required
+          
+            />
+          </div>
+
+          <div class="mb-3">
+            <label for="local" class="form-label">Bairro</label>
+            <input
+              type="text"
+              class="form-control"
+              id="local"
+              name="local"
+              required
+              placeholder="Ex: Jardim das Indústrias"
+            />
+          </div>
+
+          <div class="mb-3">
+            <label for="prioridade" class="form-label">Prioridade</label>
+            <select
+              class="form-select"
+              id="prioridade"
+              name="prioridade"
+              required
+            >
+              <option value="1">Alta</option>
+              <option value="2">Média</option>
+              <option value="3">Baixa</option>
+            </select>
+          </div>
+
+          <div class="d-grid gap-2">
+            <button type="submit" class="btn btn-primary btn-sm" style="font-size: 15px;">
+              Registrar Denúncia
+            </button>
+            <a href="{{ url_for('index') }}" class="btn btn-secondary btn-sm" style="font-size: 15px;"
+              >Cancelar</a
+            >
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

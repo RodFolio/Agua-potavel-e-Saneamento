@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="card">
+    <div class="card-header d-flex justify-content-between align-items-center">
+        <h3 class="card-title mb-0" style="font-family: Montserrat, sans-serif;">Histórico de Ações</h3>
+        <span class="badge bg-primary" style="font-family: Montserrat, sans-serif;" >{{ historico|length }} registros</span>
+    </div>
+    <div class="card-body">
+        {% if historico %}
+            <div class="list-group">
+                {% for acao in historico %}
+                    <div class="list-group-item">
+                        <div class="d-flex w-100 justify-content-between">
+                            <h6 class="mb-1">{{ acao }}</h6>
+                            <small class="text-muted">{{ loop.index }}º registro</small>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        {% else %}
+            <div class="alert alert-info">
+                Nenhuma ação registrada no histórico.
+            </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %} 

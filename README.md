@@ -1,119 +1,155 @@
 # Sistema de Denúncias de Saneamento
 
-## 📌 Descrição
-O **Sistema de Denúncias de Saneamento** é uma aplicação em Python que permite o registro, consulta, atendimento e gerenciamento de denúncias relacionadas a problemas de saneamento básico em diferentes bairros. O sistema organiza as denúncias em uma **árvore binária** (para buscas por bairro), mantém uma **fila de atendimento priorizada**, e registra um **histórico de ações**.
+## 📋 Descrição
 
-## ⚙️ Funcionalidades
+Este é um sistema de gerenciamento de denúncias relacionadas a problemas de água e saneamento. O sistema permite registrar, gerenciar e acompanhar denúncias de problemas em diferentes bairros, com um sistema de priorização para atendimento.
 
-1. **Cadastrar nova denúncia**  
-   Permite registrar uma nova denúncia com os seguintes dados:
-   - Tipo do problema
-   - Descrição
-   - Data do ocorrido
-   - Bairro (local)
-   - Prioridade (Alta = 1, Média = 2, Baixa = 3)
+## 🚀 Funcionalidades
 
-2. **Ver todas as denúncias**  
-   Lista todas as denúncias registradas no sistema.
+- Cadastro de denúncias com informações detalhadas
+- Sistema de priorização de atendimento
+- Busca de denúncias por bairro
+- Histórico de ações
+- Fila de atendimento ordenada por prioridade
+- Interface web moderna e responsiva
 
-3. **Ver fila de atendimento**  
-   Exibe a fila de atendimento **ordenada por prioridade** (1 mais urgente → 3 menos urgente).
+## 🛠️ Tecnologias Utilizadas
 
-4. **Ver histórico de ações**  
-   Mostra todas as ações realizadas, como denúncias registradas ou atendidas.
+- Python 3.x
+- Flask (Framework Web)
+- HTML5
+- CSS3
+- JavaScript
+- Estrutura de dados: Árvore Binária de Busca
 
-5. **Buscar denúncias por bairro**  
-   Permite pesquisar todas as denúncias de um bairro específico.
+## 📦 Estrutura do Projeto
 
-6. **Atender próxima denúncia**  
-   Remove da fila e atende a denúncia com **maior prioridade (menor valor)**, registrando no histórico.
+```
+.
+├── app.py              # Aplicação principal Flask
+├── denuncia.py         # Lógica de negócio e estruturas de dados
+├── inicio.py           # Script de inicialização
+├── requirements.txt    # Dependências do projeto
+├── static/            # Arquivos estáticos (CSS, JS, imagens)
+└── templates/         # Templates HTML
+```
 
-0. **Sair do sistema**  
-   Encerra a execução do programa.
+## ⚙️ Instalação
 
-## 🧱 Estrutura do Código
+1. Clone o repositório:
 
-### 📦 Classes
+```bash
+git clone [URL_DO_REPOSITÓRIO]
+```
 
-#### `Denuncia_bairro`
-Representa uma denúncia individual. Atributos:
+2. Crie um ambiente virtual:
+
+```bash
+python -m venv .venv
+```
+
+3. Ative o ambiente virtual:
+
+- Windows:
+
+```bash
+.venv\Scripts\activate
+```
+
+- Linux/Mac:
+
+```bash
+source .venv/bin/activate
+```
+
+4. Instale as dependências:
+
+```bash
+pip install -r requirements.txt
+```
+
+## 🚀 Como Executar
+
+1. Ative o ambiente virtual (se ainda não estiver ativo)
+2. Execute o servidor Flask:
+
+```bash
+python app.py
+```
+
+3. Acesse o sistema em seu navegador: `http://localhost:5000`
+
+## 📝 Estrutura de Dados
+
+O sistema utiliza uma Árvore Binária de Busca para organizar as denúncias por bairro, permitindo buscas eficientes. Cada denúncia contém:
+
 - Tipo do problema
 - Descrição
 - Data
-- Local (bairro)
-- Prioridade (1, 2 ou 3)
+- Local (Bairro)
+- Prioridade (Alta, Média, Baixa)
 
-#### `NoBairro`
-Representa um nó na árvore binária. Atributos:
-- Nome do bairro
-- Lista de denúncias associadas
-- Referências à esquerda e à direita (subárvores)
+## 🎯 Exemplos de Uso
 
-### 🔧 Funções
+### Cadastro de Denúncia
 
-- `inserir_bairro(raiz, bairro, denuncia)`  
-  Insere um novo bairro ou adiciona uma denúncia a um bairro existente na árvore binária.
+1. Acesse a página inicial
+2. Clique em "Nova Denúncia"
+3. Preencha os campos:
+   - Tipo do problema
+   - Descrição detalhada
+   - Data do ocorrido
+   - Bairro
+   - Nível de prioridade
+4. Clique em "Enviar Denúncia"
 
-- `buscar_denuncias_bairro(raiz, bairro)`  
-  Retorna a lista de denúncias associadas a um bairro específico.
+### Busca por Bairro
 
-- `sistema_denuncias()`  
-  Função principal que executa o menu interativo e gerencia as funcionalidades do sistema.
+1. Acesse a seção "Buscar Denúncias"
+2. Digite o nome do bairro
+3. Visualize todas as denúncias registradas para o bairro selecionado
 
-> 💡 **Nota**: A função `loading_animado()` (definida em `inicio.py`) pode ser chamada antes de `sistema_denuncias()` para exibir uma animação de carregamento ao iniciar.
+### Atendimento de Denúncia
 
-## 🗂️ Estruturas de Dados Utilizadas
+1. Acesse a seção "Fila de Atendimento"
+2. As denúncias estarão ordenadas por prioridade
+3. Selecione a denúncia para atendimento
+4. Registre as ações tomadas
 
-- **Árvore Binária**  
-  Organiza os bairros e suas denúncias, otimizando a busca por nome.
+## 🔧 Solução de Problemas
 
-- **Deque (Fila de Atendimento)**  
-  Armazena denúncias pendentes. Na visualização ou atendimento, é ordenada por prioridade.
+### Problemas Comuns
 
-- **Lista**  
-  Utilizada para:
-  - Armazenar todas as denúncias
-  - Registrar o histórico de ações
+1. **Servidor não inicia**
 
-## 🔁 Fluxo de Execução
+   - Verifique se o ambiente virtual está ativo
+   - Confirme se todas as dependências foram instaladas
+   - Verifique se a porta 5000 está disponível
 
-1. (Opcional) A animação de carregamento é exibida.
-2. O usuário interage com o menu principal.
-3. Cada opção chama a funcionalidade correspondente, como:
-   - Registrar denúncia
-   - Exibir dados
-   - Atender denúncia mais urgente
-   - Buscar por bairro
-   - Encerrar o programa
+2. **Erro ao instalar dependências**
+   - Atualize o pip: `python -m pip install --upgrade pip`
+   - Verifique a conexão com a internet
+   - Tente instalar as dependências uma por uma
 
-## 🧪 Exemplos de Uso
+## 🤝 Contribuindo
 
-### ✅ Cadastro de Denúncia
-1. Escolha a opção `1` no menu.
-2. Preencha os dados:
-   - Tipo: `Falta de água`
-   - Descrição: `Sem fornecimento há 3 dias`
-   - Data: `10/10/2025`
-   - Bairro: `Centro`
-   - Prioridade: `1` (Alta)
-3. A denúncia será adicionada à lista geral, à fila de atendimento e ao bairro na árvore binária.
+Contribuições são bem-vindas! Para contribuir:
 
-### 🔍 Busca por Bairro
-1. Escolha a opção `5`.
-2. Digite o nome do bairro, como `Centro`.
-3. O sistema listará todas as denúncias registradas para esse bairro.
+1. Faça um Fork do projeto
+2. Crie uma branch para sua feature (`git checkout -b feature/NovaFuncionalidade`)
+3. Commit suas mudanças (`git commit -m 'Adiciona nova funcionalidade'`)
+4. Push para a branch (`git push origin feature/NovaFuncionalidade`)
+5. Abra um Pull Request
 
-### 🛠️ Atendimento de Denúncia
-1. Escolha a opção `6`.
-2. O sistema localizará e atenderá a **denúncia de maior prioridade** (prioridade 1 > 2 > 3).
-3. A denúncia será removida da fila e adicionada ao histórico.
+## 📄 Licença
 
-## 💻 Requisitos
-- Python **3.6** ou superior
-- Apenas bibliotecas padrão do Python (`collections`)
+Este projeto está sob a licença MIT. Veja o arquivo `LICENSE` para mais detalhes.
 
-## ▶️ Como Executar
+## 📞 Suporte
 
-1. Clone o repositório:
-   ```bash
-   git clone https://github.com/seu-usuario/agua-potavel-e-saneamento.git
+Para reportar problemas ou sugerir melhorias, por favor:
+
+1. Abra uma issue no GitHub
+2. Descreva o problema ou sugestão detalhadamente
+3. Inclua passos para reproduzir o problema (se aplicável)
+4. Adicione screenshots (se relevante)

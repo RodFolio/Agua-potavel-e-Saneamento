@@ -34,9 +34,9 @@ def inserir_bairro(raiz, bairro, denuncia):
         novo.denuncias.append(denuncia)
         return novo
     if bairro < raiz.bairro:
-        raiz.esq = inserir_bairro(raiz.esquerda, bairro, denuncia)
+        raiz.esquerdo = inserir_bairro(raiz.esquerdo, bairro, denuncia)
     elif bairro > raiz.bairro:
-        raiz.dir = inserir_bairro(raiz.direita, bairro, denuncia)
+        raiz.direito = inserir_bairro(raiz.direito, bairro, denuncia)
     else:
         raiz.denuncias.append(denuncia)
     return raiz
@@ -47,9 +47,9 @@ def buscar_denuncias_bairro(raiz, bairro):
     if bairro == raiz.bairro:
         return raiz.denuncias
     elif bairro < raiz.bairro:
-        return buscar_denuncias_bairro(raiz.esquerda, bairro)
+        return buscar_denuncias_bairro(raiz.esquerdo, bairro)
     else:
-        return buscar_denuncias_bairro(raiz.direita, bairro)
+        return buscar_denuncias_bairro(raiz.direito, bairro)
 
 def sistema_denuncias():
     raiz_bairros = None
