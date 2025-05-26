@@ -19,7 +19,6 @@ Este é um sistema de gerenciamento de denúncias relacionadas a problemas de á
 - Flask (Framework Web)
 - HTML5
 - CSS3
-- JavaScript
 - Estrutura de dados: Árvore Binária de Busca
 
 ## 📦 Estrutura do Projeto
@@ -131,25 +130,6 @@ O sistema utiliza uma Árvore Binária de Busca para organizar as denúncias por
    - Verifique a conexão com a internet
    - Tente instalar as dependências uma por uma
 
-## 🤝 Contribuindo
-
-Contribuições são bem-vindas! Para contribuir:
-
-1. Faça um Fork do projeto
-2. Crie uma branch para sua feature (`git checkout -b feature/NovaFuncionalidade`)
-3. Commit suas mudanças (`git commit -m 'Adiciona nova funcionalidade'`)
-4. Push para a branch (`git push origin feature/NovaFuncionalidade`)
-5. Abra um Pull Request
-
 ## 📄 Licença
 
 Este projeto está sob a licença MIT. Veja o arquivo `LICENSE` para mais detalhes.
-
-## 📞 Suporte
-
-Para reportar problemas ou sugerir melhorias, por favor:
-
-1. Abra uma issue no GitHub
-2. Descreva o problema ou sugestão detalhadamente
-3. Inclua passos para reproduzir o problema (se aplicável)
-4. Adicione screenshots (se relevante)
