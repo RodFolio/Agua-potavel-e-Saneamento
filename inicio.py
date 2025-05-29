@@ -5,7 +5,7 @@ from denuncia import Denuncia_bairro, NoBairro, inserir_bairro, buscar_denuncias
 
 @dataclass
 class LoadingAnimado:
-    roda_roda_jequiti: list = field(default_factory=lambda: ['|', '/', '-', '\\', '|', '/', '-', '\\'])
+    roda_roda_jequiti: list = field(default_factory=lambda: ['|', '/', '-', '\\', '|', '/', '-', '\\']) 
     barra_total: int = 20
 
     def iniciar(self):
@@ -18,8 +18,8 @@ class LoadingAnimado:
 
         for i in range(self.barra_total + 1):
             porcentagem = int((i / self.barra_total) * 100)
-            barra = '\033[32m█\033[0m' * i + '\033[37m█\033[0m' * (self.barra_total - i)
-            spinner_char = self.roda_roda_jequiti[i % len(self.roda_roda_jequiti)]
+            barra = '\033[32m█\033[0m' * i + '\033[37m█\033[0m' * (self.barra_total - i) 
+            spinner_char = self.roda_roda_jequiti[i % len(self.roda_roda_jequiti)] # faz a animação girar
 
             sys.stdout.write(f"\r{spinner_char} \033[1m\033[33mCarregando\033[0m: {barra} {porcentagem}% ")
             sys.stdout.flush()
@@ -27,7 +27,7 @@ class LoadingAnimado:
 
         print("\n\033[32m✅ Sistema carregado com sucesso!\033[0m\n")
 
-if __name__ == "__main__":
+if __name__ == "__main__": # 
     loading = LoadingAnimado()
     loading.iniciar()
     sistema_denuncias()
