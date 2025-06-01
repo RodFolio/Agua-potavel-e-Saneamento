@@ -1,4 +1,4 @@
-from dataclasses import dataclass,field #nova função python 3
+from dataclasses import dataclass #nova função python 3
 
 # from collections import deque
 # fila_atendimento = deque()
@@ -25,7 +25,7 @@ class Denuncia_bairro:
 @dataclass 
 class NoBairro:
     bairro: str
-    denuncias: list = field(default_factory=list) # inicializa com uma vetor/lista vazia
+    denuncias: list = None # inicializa com uma vetor/lista vazia
     esquerdo: 'NoBairro' = None 
     direito: 'NoBairro' = None
 
@@ -81,14 +81,14 @@ def sistema_denuncias():
             descricao = input("\033[1;33mDescrição do Problema Ocorrido: \033[0m")
             data = input("\033[1;33mData (dd/mm/aaaa): \033[0m")
             local = input("\033[1;33mBairro: \033[0m")
-            prioridade = int(input("\033[1;31mPrioridade (1=Alta, 2=Média, 3=Baixa): \033[0m"))
+            prioridade = int(input("\033[1;31mDigite da nível de Prioridade:(1 = Alta, 2 = Média, 3 = Baixa):\033[0m"))
 
             Denuncias = Denuncia_bairro(tipo, descricao, data, local, prioridade)
             vetor_denuncias.append(Denuncias)
             fila_atendimento.append(Denuncias)
             vetor_historico.append(f"Denúncia cadastrada: {tipo} - {local}")
             raiz_bairros = inserir_bairro(raiz_bairros, local, Denuncias)
-            print("✅ \033[32mDenúncia registrada com sucesso.\033[0m")
+            print("\n✅ \033[1;32mDenúncia registrada com sucesso.\033[0m")
 
         elif opcao == "2":
             if not vetor_denuncias:

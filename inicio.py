@@ -6,15 +6,15 @@ from denuncia import Denuncia_bairro, NoBairro, inserir_bairro, buscar_denuncias
 @dataclass
 class LoadingAnimado:
     roda_roda_jequiti: list = field(default_factory=lambda: ['|', '/', '-', '\\', '|', '/', '-', '\\']) 
-    barra_total: int = 20
+    barra_total: int = 25
 
     def iniciar(self):
         print("\033[34m")
-        print("=" * 42)
-        print("🚰 SISTEMA DE AGUA | Versão: ALPHA 1.0 🚰")
-        print("=" * 42)
+        print("=" * 57)
+        print("🚰 Sistema de denúncias e saneamento básico.|ALPHA 1.0 🚰".upper())
+        print("=" * 57)
         print("\033[0m")
-        print("\033[33mIniciando sistema... Aguarde\033[0m\n")
+        print("\033[33mIniciando sistema... Aguarde!\033[0m\n")
 
         for i in range(self.barra_total + 1):
             porcentagem = int((i / self.barra_total) * 100)
@@ -25,9 +25,12 @@ class LoadingAnimado:
             sys.stdout.flush()
             tempo.sleep(0.2)
 
-        print("\n\033[32m✅ Sistema carregado com sucesso!\033[0m\n")
+        print("\n\033[32m✅ Sistema carregado com Sucesso!\033[0m\n")
 
-if __name__ == "__main__": # 
-    loading = LoadingAnimado()
-    loading.iniciar()
-    sistema_denuncias()
+LoadingAnimado().iniciar()
+sistema_denuncias()
+        
+# if __name__ == "__main__": # 
+#     loading = LoadingAnimado()
+#     loading.iniciar()
+#     sistema_denuncias()
