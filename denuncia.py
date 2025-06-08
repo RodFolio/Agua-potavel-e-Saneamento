@@ -3,6 +3,7 @@ from dataclasses import dataclass #nova função python 3
 # from collections import deque
 # fila_atendimento = deque()
 
+
 fila_atendimento = [] # adicionando as denúncias
 vetor_historico = [] 
 vetor_denuncias = [] 
