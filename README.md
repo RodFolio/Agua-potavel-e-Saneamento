@@ -135,9 +135,9 @@ O sistema utiliza uma Árvore Binária de Busca para organizar as denúncias por
    - Tente instalar as dependências uma por uma
 
 
+
   
 👩‍💻 Equipe de Desenvolvimento:
-
 <a href="https://github.com/iSousadev">Rodolfo Sousa</a>, <a href="https://github.com/maria-ramos652">Maria Eduarda</a>, <a href="https://github.com/camscostney">Camila Costney</a>, <a href="https://github.com/Espakki">Winicius Passaia</a>, <a href="https://github.com/KaiqueCh">Kaique Chaves</a>
 
 ## 📄 Licença
