@@ -134,6 +134,11 @@ O sistema utiliza uma Árvore Binária de Busca para organizar as denúncias por
    - Verifique a conexão com a internet
    - Tente instalar as dependências uma por uma
 
+
+  
+👩‍💻 Equipe de Desenvolvimento:
+ #### Rodolfo Sousa, Kaique Chaves, Maria Eduarda Pinto Ramos, Camila Costney e Winicius Passaia
+
 ## 📄 Licença
 
 Este projeto está sob a licença MIT. Veja o arquivo `LICENSE` para mais detalhes.
