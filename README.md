@@ -4,6 +4,10 @@
 
 Este é um sistema de gerenciamento de denúncias relacionadas a problemas de água e saneamento. O sistema permite registrar, gerenciar e acompanhar denúncias de problemas em diferentes bairros, com um sistema de priorização para atendimento.
 
+![Captura de tela 2025-06-08 204423](https://github.com/user-attachments/assets/b5808fa6-7b69-4a41-9ecf-a259a28c090e)
+Deploy: https://agua-potavel-e-saneamento-basico-m9gvteo9z.vercel.app/
+
+
 ## 🚀 Funcionalidades
 
 - Cadastro de denúncias com informações detalhadas
